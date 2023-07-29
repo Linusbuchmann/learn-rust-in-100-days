@@ -1,4 +1,3 @@
-#![warn(non_snake_case)]
 use std::io;
 use rand::Rng;
 
