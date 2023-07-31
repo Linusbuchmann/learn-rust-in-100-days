@@ -21,11 +21,20 @@ async fn main() {
     let mut player_rect = Rectangle { x: 150.0_f32, y: 10.0_f32, w: 13.0_f32, h: 13.0_f32, color: GREEN, speed: 3.5_f32 };
     let obstacle_rect = Rectangle { x: 150.0_f32, y: 500.0_f32, w: 120.0_f32, h: 23.0_f32, color: RED, speed: 0.0_f32 };
     let obstacle_rect2 = Rectangle { x: 250.0_f32, y: 600.0_f32, w: 80.0_f32, h: 17.0_f32, color: RED, speed: 0.0_f32 };
+    // player
+    let mut player_x: f32 = 0.0;
+    let mut player_y: f32 = 770.0;
+
+    let player_texture: Texture2D = load_texture("sprites/pixel-64x64.png").await.unwrap();
+    
     // let mut obstacles_vector = vec![];
 
     loop {
+        player_x = player_rect.x;
+        player_y = player_rect.y;
 
         clear_background(GRAY);
+        draw_texture(&player_texture, player_x, player_y, WHITE);
 
        /* if is_key_down(KeyCode::W) {
                 player_rect.y -= player_rect.speed;
