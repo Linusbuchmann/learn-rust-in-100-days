@@ -6,7 +6,7 @@ struct Rectangle {
     y: f32,
     w: f32,
     h: f32,
-    color: macroquad::prelude::Color,  // should be <T>, I don't wanna deal with the custom color type, but macroquad has some bugs
+    // color: macroquad::prelude::Color,  // should be <T>, I don't wanna deal with the custom color type, but macroquad has some bugs
     speed: f32,  // should be <U> , I want users to have more customiazation over speed, but macroquad has some bugs with this...
 
 }
@@ -14,58 +14,62 @@ struct Rectangle {
 
 #[macroquad::main("InputKeys")]
 async fn main() {
-    // let mut player_x: f32 = screen_width() / 2.0_f32;
-    // let mut player_y: f32 = screen_width() / 2.0_f32;
     let gravity_speed: f32 = 3.0_f32;
     let mut collisions: bool = false;
-    let mut player_rect = Rectangle { x: 150.0_f32, y: 10.0_f32, w: 13.0_f32, h: 13.0_f32, color: GREEN, speed: 3.5_f32 };
-    let obstacle_rect = Rectangle { x: 150.0_f32, y: 500.0_f32, w: 120.0_f32, h: 23.0_f32, color: RED, speed: 0.0_f32 };
-    let obstacle_rect2 = Rectangle { x: 250.0_f32, y: 600.0_f32, w: 80.0_f32, h: 17.0_f32, color: RED, speed: 0.0_f32 };
-    // player
-    let mut player_x: f32 = 0.0;
-    let mut player_y: f32 = 770.0;
 
-    let player_texture: Texture2D = load_texture("sprites/pixel-64x64.png").await.unwrap();
+    let background_texture: Texture2D = load_texture("sprites/SpaceBg.png").await.unwrap();
     
-    // let mut obstacles_vector = vec![];
-
+    let mut enemy_rect = Rectangle { x: 150.0_f32, y: 500.0_f32, w: 120.0_f32, h: 23.0_f32, speed: 14.2_f32 };
+    let enemy_texture: Texture2D = load_texture("sprites/enemy.png").await.unwrap();
+    
+    let mut player_rect = Rectangle { x: 150.0_f32, y: 760.0_f32, w: 64.0_f32, h: 64.0_f32, speed: 14.2_f32 };
+    let player_texture: Texture2D = load_texture("sprites/spaceship.png").await.unwrap();
+    
     loop {
-        player_x = player_rect.x;
-        player_y = player_rect.y;
+        let enemy_x:f32 = enemy_rect.x;
+        let enemy_y:f32 = enemy_rect.y;
 
-        clear_background(GRAY);
+        let player_x: f32 = player_rect.x;
+        let player_y: f32 = player_rect.y;
+
+        //clear_background(GRAY);
+        
+        draw_texture(&background_texture, 0.0, 0.0, WHITE);
+
+        draw_texture(&enemy_texture, enemy_x, enemy_y, WHITE);
+
         draw_texture(&player_texture, player_x, player_y, WHITE);
+        if is_key_down(KeyCode::Space) {
+            enemy_rect.y += enemy_rect.speed;
+        }
 
-       /* if is_key_down(KeyCode::W) {
-                player_rect.y -= player_rect.speed;
-        }*/
         if is_key_down(KeyCode::A) {
-                player_rect.x -= player_rect.speed;
+            player_rect.x -= player_rect.speed;
         }
         if is_key_down(KeyCode::D) {
                 player_rect.x += player_rect.speed;
         }
 
-
-
-
-        draw_rectangle(player_rect.x, player_rect.y, player_rect.w, player_rect.h, player_rect.color);
-
-        draw_rectangle(obstacle_rect.x, obstacle_rect.y, obstacle_rect.w, obstacle_rect.h, obstacle_rect.color);
-
-
-        rectangle_collisions(&player_rect, &obstacle_rect, &mut collisions);
-
-
-       if collisions == true {
-            player_rect.color = BLUE;
-            if is_key_pressed(KeyCode::W) {
-                player_rect.y -= player_rect.speed * 20.0_f32;
-            }
+        if player_rect.x <= -18.0 {
+            player_rect.x = 1526.0;
+        } 
+        if player_rect.x >= 1527.5 {
+            player_rect.x = -17.0;
         }
-        if collisions == false {
-            player_rect.color = GREEN;
+        //println!("{} : {}", player_rect.x, player_rect.y);
+
+
+        draw_rectangle(player_rect.x, player_rect.y, player_rect.w, player_rect.h, Color::new(255.0, 255.0, 255.0, 0.0));
+        
+        draw_rectangle(enemy_rect.x, enemy_rect.y, enemy_rect.w, enemy_rect.h, Color::new(255.0, 255.0, 255.0, 0.0));
+
+        rectangle_collisions(&player_rect, &enemy_rect, &mut collisions);
+
+
+        if collisions == true {
+            println!("collisions: {}", collisions);
             player_rect.y += gravity_speed;
+            break;
         }
 
         next_frame().await;
