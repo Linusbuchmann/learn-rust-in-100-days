@@ -12,5 +12,6 @@ all-features = true
 
 
 [dependencies]
-macroquad="0.4.2"
+rand = "0.8.5"
+macroquad = "0.4.2"
 

@@ -1,4 +1,6 @@
 use macroquad::prelude::*;
+extern crate rand;
+use rand::prelude::*;
 
 #[derive(Debug, Clone, Copy)]
 struct Rectangle {
@@ -15,20 +17,23 @@ struct Rectangle {
 #[macroquad::main("InputKeys")]
 async fn main() {
     let gravity_speed: f32 = 3.0_f32;
+    let mut random_speed: f32 = 2.0;
+    let mut random_pos: f32 = rand::thread_rng().gen_range(-18.0..1527.0);
     let mut collisions: bool = false;
-
+    
     let background_texture: Texture2D = load_texture("sprites/SpaceBg.png").await.unwrap();
     
-    let mut enemy_rect = Rectangle { x: 150.0_f32, y: 500.0_f32, w: 120.0_f32, h: 23.0_f32, speed: 14.2_f32 };
+    let mut enemy_rect = Rectangle { x: 150.0_f32, y: random_pos_f32, w: 120.0_f32, h: 23.0_f32, speed: 14.2_f32 };
     let enemy_texture: Texture2D = load_texture("sprites/enemy.png").await.unwrap();
     
     let mut player_rect = Rectangle { x: 150.0_f32, y: 760.0_f32, w: 64.0_f32, h: 64.0_f32, speed: 14.2_f32 };
     let player_texture: Texture2D = load_texture("sprites/spaceship.png").await.unwrap();
     
     loop {
+        
         let enemy_x:f32 = enemy_rect.x;
         let enemy_y:f32 = enemy_rect.y;
-
+        
         let player_x: f32 = player_rect.x;
         let player_y: f32 = player_rect.y;
 
@@ -37,19 +42,23 @@ async fn main() {
         draw_texture(&background_texture, 0.0, 0.0, WHITE);
 
         draw_texture(&enemy_texture, enemy_x, enemy_y, WHITE);
-
+        
         draw_texture(&player_texture, player_x, player_y, WHITE);
-        if is_key_down(KeyCode::Space) {
-            enemy_rect.y += enemy_rect.speed;
-        }
-
+        
+        
+        if enemy_rect.y >= 770.0 {
+            random_speed = rand::thread_rng().gen_range(0.0..10.0);
+            enemy_rect.y = 0.0;
+        }        
+        enemy_rect.y += random_speed;
+        
         if is_key_down(KeyCode::A) {
             player_rect.x -= player_rect.speed;
         }
         if is_key_down(KeyCode::D) {
                 player_rect.x += player_rect.speed;
-        }
-
+            }
+            
         if player_rect.x <= -18.0 {
             player_rect.x = 1526.0;
         } 
@@ -57,10 +66,10 @@ async fn main() {
             player_rect.x = -17.0;
         }
         //println!("{} : {}", player_rect.x, player_rect.y);
+        println!("{}", random_speed);
 
 
         draw_rectangle(player_rect.x, player_rect.y, player_rect.w, player_rect.h, Color::new(255.0, 255.0, 255.0, 0.0));
-        
         draw_rectangle(enemy_rect.x, enemy_rect.y, enemy_rect.w, enemy_rect.h, Color::new(255.0, 255.0, 255.0, 0.0));
 
         rectangle_collisions(&player_rect, &enemy_rect, &mut collisions);
