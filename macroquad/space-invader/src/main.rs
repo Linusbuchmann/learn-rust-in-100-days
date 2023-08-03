@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
 extern crate rand;
 use rand::prelude::*;
+use macroquad::prelude::*;
 
 #[derive(Debug, Clone, Copy)]
 struct Rectangle {
@@ -8,13 +8,12 @@ struct Rectangle {
     y: f32,
     w: f32,
     h: f32,
-    // color: macroquad::prelude::Color,  // should be <T>, I don't wanna deal with the custom color type, but macroquad has some bugs
-    speed: f32,  // should be <U> , I want users to have more customiazation over speed, but macroquad has some bugs with this...
+    speed: f32, 
 
 }
 
 
-#[macroquad::main("InputKeys")]
+#[macroquad::main("space-invader")]
 async fn main() {
     let gravity_speed: f32 = 3.0_f32;
     let mut random_speed: f32 = 2.0;
@@ -23,19 +22,23 @@ async fn main() {
     
     let background_texture: Texture2D = load_texture("sprites/SpaceBg.png").await.unwrap();
     
-    let mut enemy_rect = Rectangle { x: 150.0_f32, y: random_pos_f32, w: 120.0_f32, h: 23.0_f32, speed: 14.2_f32 };
-    let enemy_texture: Texture2D = load_texture("sprites/enemy.png").await.unwrap();
+    let mut enemy_rect = Rectangle { x: 150.0_f32, y: 0.0, w: 80.0_f32, h: 80.0_f32, speed: 14.2_f32 };
+    let enemy_texture: Texture2D = load_texture("sprites/enemy-stone.png").await.unwrap();
     
-    let mut player_rect = Rectangle { x: 150.0_f32, y: 760.0_f32, w: 64.0_f32, h: 64.0_f32, speed: 14.2_f32 };
+    let mut player_rect = Rectangle { x: 150.0_f32, y: 760.0_f32, w: 50.0_f32, h: 50.0_f32, speed: 14.2_f32 };
     let player_texture: Texture2D = load_texture("sprites/spaceship.png").await.unwrap();
     
     loop {
         
-        let enemy_x:f32 = enemy_rect.x;
+        let mut enemy_x:f32 = enemy_rect.x;
+        enemy_x -= 4.0;
         let enemy_y:f32 = enemy_rect.y;
         
-        let player_x: f32 = player_rect.x;
-        let player_y: f32 = player_rect.y;
+        
+        let mut player_x: f32 = player_rect.x;
+        player_x -= 12.9;
+        let mut player_y: f32 = player_rect.y;
+        player_y -= 15.0;
 
         //clear_background(GRAY);
         
@@ -47,8 +50,10 @@ async fn main() {
         
         
         if enemy_rect.y >= 770.0 {
-            random_speed = rand::thread_rng().gen_range(0.0..10.0);
+            random_speed = rand::thread_rng().gen_range(2.0..10.0);
             enemy_rect.y = 0.0;
+            enemy_rect.x = random_pos;
+            random_pos = rand::thread_rng().gen_range(-18.0..1527.0);
         }        
         enemy_rect.y += random_speed;
         
@@ -58,6 +63,14 @@ async fn main() {
         if is_key_down(KeyCode::D) {
                 player_rect.x += player_rect.speed;
             }
+        if is_key_down(KeyCode::LeftShift){
+            player_rect.speed = 20.0;
+            
+
+        }
+            else {
+                player_rect.speed = 14.2;
+            }
             
         if player_rect.x <= -18.0 {
             player_rect.x = 1526.0;
@@ -66,11 +79,13 @@ async fn main() {
             player_rect.x = -17.0;
         }
         //println!("{} : {}", player_rect.x, player_rect.y);
-        println!("{}", random_speed);
+        //println!("{}", random_speed);
 
 
         draw_rectangle(player_rect.x, player_rect.y, player_rect.w, player_rect.h, Color::new(255.0, 255.0, 255.0, 0.0));
         draw_rectangle(enemy_rect.x, enemy_rect.y, enemy_rect.w, enemy_rect.h, Color::new(255.0, 255.0, 255.0, 0.0));
+        
+
 
         rectangle_collisions(&player_rect, &enemy_rect, &mut collisions);
 
