@@ -2,6 +2,8 @@ extern crate rand;
 use rand::prelude::*;
 use macroquad::prelude::*;
 
+
+
 #[derive(Debug, Clone, Copy)]
 struct Rectangle {
     x: f32,
@@ -12,7 +14,6 @@ struct Rectangle {
 
 }
 
-
 #[macroquad::main("space-invader")]
 async fn main() {
     let gravity_speed: f32 = 3.0_f32;
@@ -21,7 +22,7 @@ async fn main() {
     let mut collisions: bool = false;
     
     let background_texture: Texture2D = load_texture("sprites/SpaceBg.png").await.unwrap();
-    
+
     let mut enemy_rect = Rectangle { x: 150.0_f32, y: 0.0, w: 80.0_f32, h: 80.0_f32, speed: 14.2_f32 };
     let enemy_texture: Texture2D = load_texture("sprites/enemy-stone.png").await.unwrap();
     
@@ -29,7 +30,6 @@ async fn main() {
     let player_texture: Texture2D = load_texture("sprites/spaceship.png").await.unwrap();
     
     loop {
-        
         let mut enemy_x:f32 = enemy_rect.x;
         enemy_x -= 4.0;
         let enemy_y:f32 = enemy_rect.y;
@@ -42,9 +42,15 @@ async fn main() {
 
         //clear_background(GRAY);
         
+        
         draw_texture(&background_texture, 0.0, 0.0, WHITE);
-
+        
         draw_texture(&enemy_texture, enemy_x, enemy_y, WHITE);
+        
+        draw_texture(&enemy_texture, 23.0, enemy_y, WHITE);
+        
+
+        //draw_texture(&enemy_texture, enemy_x, enemy_y, WHITE);
         
         draw_texture(&player_texture, player_x, player_y, WHITE);
         
@@ -81,12 +87,9 @@ async fn main() {
         //println!("{} : {}", player_rect.x, player_rect.y);
         //println!("{}", random_speed);
 
-
         draw_rectangle(player_rect.x, player_rect.y, player_rect.w, player_rect.h, Color::new(255.0, 255.0, 255.0, 0.0));
         draw_rectangle(enemy_rect.x, enemy_rect.y, enemy_rect.w, enemy_rect.h, Color::new(255.0, 255.0, 255.0, 0.0));
         
-
-
         rectangle_collisions(&player_rect, &enemy_rect, &mut collisions);
 
 
