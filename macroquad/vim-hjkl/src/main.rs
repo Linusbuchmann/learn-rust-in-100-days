@@ -19,9 +19,6 @@ async fn main() {
         let player_y: f32 = player_rect.y;        
         
         clear_background(GRAY);
-        if is_key_down(KeyCode::A) {
-            texture_path = load_texture("sprite/car.png").await.unwrap();
-        }
         if is_key_down(KeyCode::H) {
             player_rect.x -= player_rect.speed;
         }
