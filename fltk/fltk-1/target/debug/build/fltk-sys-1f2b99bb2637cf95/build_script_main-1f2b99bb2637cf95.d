@@ -1,0 +1,10 @@
+C:\Users\linus\Desktop\learn-rust-in-100-days\fltk\fltk-1\target\debug\build\fltk-sys-1f2b99bb2637cf95\build_script_main-1f2b99bb2637cf95.exe: C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build/main.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\android.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\bundled.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\link.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\source.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\utils.rs
+
+C:\Users\linus\Desktop\learn-rust-in-100-days\fltk\fltk-1\target\debug\build\fltk-sys-1f2b99bb2637cf95\build_script_main-1f2b99bb2637cf95.d: C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build/main.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\android.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\bundled.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\link.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\source.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\utils.rs
+
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build/main.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\android.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\bundled.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\link.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\source.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fltk-sys-1.4.12\build\utils.rs:

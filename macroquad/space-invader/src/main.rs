@@ -2,8 +2,6 @@ extern crate rand;
 use rand::prelude::*;
 use macroquad::prelude::*;
 
-
-
 #[derive(Debug, Clone, Copy)]
 struct Rectangle {
     x: f32,
