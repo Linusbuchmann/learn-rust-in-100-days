@@ -1,0 +1,11 @@
+C:\Users\linus\Desktop\learn-rust-in-100-days\ggez\draw-window\target\debug\deps\libloading-8e5af979cdd53c3b.rmeta: C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\lib.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\changelog.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\os\mod.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\os\windows\mod.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\util.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\error.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\safe.rs
+
+C:\Users\linus\Desktop\learn-rust-in-100-days\ggez\draw-window\target\debug\deps\libloading-8e5af979cdd53c3b.d: C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\lib.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\changelog.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\os\mod.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\os\windows\mod.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\util.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\error.rs C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\safe.rs
+
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\lib.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\changelog.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\os\mod.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\os\windows\mod.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\util.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\error.rs:
+C:\Users\linus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libloading-0.8.0\src\safe.rs:
